@@ -22,7 +22,8 @@
 		<module>fs-services</module>
 		<module>fs-web</module>		
 		<module>fs-security</module>		
-		<module>fs-validator</module>		
+		<module>fs-validator</module>	
+		<module>fs-mail</module>	
 	</modules>
 
 	<properties>

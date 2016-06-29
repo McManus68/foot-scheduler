@@ -2,10 +2,10 @@ package com.mcmanus.fs.security.services.impl;
 
 import com.mcmanus.fs.model.jpa.Player;
 import com.mcmanus.fs.security.AuthenticationRepositoryService;
-import com.mcmanus.fs.security.TokenUtils;
+import com.mcmanus.fs.security.model.AuthenticationToken;
+import com.mcmanus.fs.security.model.Login;
 import com.mcmanus.fs.security.services.AuthenticationService;
-import com.mcmanus.fs.security.services.model.AuthenticationToken;
-import com.mcmanus.fs.security.services.model.Login;
+import com.mcmanus.fs.security.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,11 +17,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+    private static final long RECOVERY_DEFAULT_EXPIRY_TIME = 60 * 24 * 60 * 1000;
+
+    private static final long AUTH_DEFAULT_EXPIRY_TIME = 60 * 60 * 1000;
+
     @Autowired
     private AuthenticationRepositoryService authRepoSrv;
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
 
     @Override
     public AuthenticationToken login(Login login)  {
@@ -31,7 +36,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         Player player = (Player) authentication.getPrincipal();
-        return new AuthenticationToken(TokenUtils.createAuthToken(player), player);
+        return new AuthenticationToken(TokenUtils.createToken(player), player);
     }
 
     @Override
@@ -41,7 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (login != null && !login.isEmpty()) {
             UserDetails userDetails = authRepoSrv.loadUserByUsername(login);
 
-            if (TokenUtils.validateAuthToken(token, userDetails)) {
+            if (TokenUtils.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }

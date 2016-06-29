@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mcmanus.fs</groupId>
+		<artifactId>fs-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>fs-mail</artifactId>
+	<name>Foot scheduler mail sender</name>
+	<description>>Foot scheduler mail sender</description>
+	
+	<properties>
+		<velocity.version>1.7</velocity.version>
+		<javax.mail.version>1.4.7</javax.mail.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${javax.mail.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mcmanus.fs</groupId>
+			<artifactId>fs-persistence</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+
+	</dependencies>
+
+</project>

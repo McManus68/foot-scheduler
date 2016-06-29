@@ -1,0 +1,11 @@
+<html>
+<body>
+<h3>Bonjour ${user.firstName} ${user.name},</h3>
+
+Un compte à votre nom a été créé.<br/>
+Utilisez le lien suivant afin de modifier le mot de passe : <a href="${mailRecoveryUrl}">${mailRecoveryUrl}</a><br/>
+<br/>
+Cordialement,
+<br/>
+</body>
+</html>

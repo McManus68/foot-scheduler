@@ -1,4 +1,4 @@
-package com.mcmanus.fs.security.services.model;
+package com.mcmanus.fs.security.model;
 
 public class Login {
 

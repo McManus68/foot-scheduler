@@ -1,4 +1,4 @@
-package com.mcmanus.fs.security.services.model;
+package com.mcmanus.fs.security.model;
 
 
 import com.mcmanus.fs.model.jpa.Player;

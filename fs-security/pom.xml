@@ -34,6 +34,12 @@
 		<artifactId>fs-persistence</artifactId>
 		<version>0.0.1</version>
 	</dependency>
+
+	  <dependency>
+		  <groupId>com.mcmanus.fs</groupId>
+		  <artifactId>fs-mail</artifactId>
+		  <version>0.0.1</version>
+	  </dependency>
 			
   </dependencies>
 
