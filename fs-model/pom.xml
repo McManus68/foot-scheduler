@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mcmanus.fs</groupId>
+		<artifactId>fs-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>fs-model</artifactId>
+	<name>Foot scheduler model</name>
+	<description>Foot scheduler model</description>
+
+	<properties>		
+		<hibernate.validator.version>5.2.4.Final</hibernate.validator.version>			
+	</properties>
+	
+	<dependencies>	
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>	
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+				
+	</dependencies>
+</project>

@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.mcmanus.fs</groupId>
+        <artifactId>fs-parent</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>fs-persistence</artifactId>
+    <name>Foot scheduler persistence layer</name>
+    <description>Foot scheduler persistence layer</description>
+
+    <properties>
+	<spring.data.jpa.version>1.10.2.RELEASE</spring.data.jpa.version>	
+	<mysql.connector.version>6.0.3</mysql.connector.version>
+	<flyway.version>4.0.3</flyway.version>
+	<common.beanutils.version>1.9.2</common.beanutils.version>
+	<common.dbcp.version>1.4</common.dbcp.version>
+    <hibernate.version>5.2.0.Final</hibernate.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+    		<version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-entitymanager</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+    		<version>${mysql.connector.version}</version>
+    		<scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+    		<groupId>commons-dbcp</groupId>
+    		<artifactId>commons-dbcp</artifactId>
+    		<version>${common.dbcp.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>commons-beanutils</groupId>
+    		<artifactId>commons-beanutils</artifactId>
+    		<version>${common.beanutils.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-tx</artifactId>
+    		<version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-orm</artifactId>
+    		<version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-jpa</artifactId>
+    		<version>${spring.data.jpa.version}</version>
+        </dependency>
+
+        <dependency>
+    		<groupId>com.mcmanus.fs</groupId>
+    		<artifactId>fs-model</artifactId>
+    		<version>0.0.1</version>
+        </dependency>
+
+    </dependencies>
+</project>

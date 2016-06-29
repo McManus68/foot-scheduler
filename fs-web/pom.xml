@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mcmanus.fs</groupId>
+		<artifactId>fs-parent</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>fs-web</artifactId>
+	<packaging>war</packaging>
+	<name>Foot scheduler UI</name>
+	
+	<properties>
+		<jackson.version>2.7.5</jackson.version>
+		<yoga.version>1.0.6</yoga.version>		
+	</properties>
+	
+	<dependencies>	
+
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>yoga-core</artifactId>
+			<version>${yoga.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>yoga-springmvc</artifactId>
+			<version>${yoga.version}</version>
+		</dependency>	
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!--dependency>
+			<groupId>com.mcmanus.fs</groupId>
+			<artifactId>fs-client</artifactId>
+			<version>0.0.1</version>
+			<type>zip</type>
+		</dependency-->	
+
+		<dependency>
+	    		<groupId>com.mcmanus.fs</groupId>
+	    		<artifactId>fs-services</artifactId>
+	    		<version>0.0.1</version>
+		</dependency>
+
+		<dependency>
+	    		<groupId>com.mcmanus.fs</groupId>
+	    		<artifactId>fs-validator</artifactId>
+	    		<version>0.0.1</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>foot-scheduler</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<!-- Clean will remove all the webapp content -->
+					<filesets>
+						<fileset>
+							<directory>${basedir}/src/main/webapp</directory>
+							<includes>
+								<include>**/*.*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<!--plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>						
+						<id>unpack</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.mcmanus.fs</groupId>
+									<artifactId>fs-client</artifactId>
+									<version>${project.version}</version>
+									<type>zip</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${project.build.directory}/fs</outputDirectory>
+									<includes>**</includes>
+								</artifactItem>
+							</artifactItems>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin-->
+		</plugins>
+	</build>
+
+</project>
