@@ -1,7 +1,7 @@
 package com.mcmanus.fs.validator;
 
 import com.mcmanus.fs.model.jpa.Player;
-import com.mcmanus.fs.services.UserService;
+import com.mcmanus.fs.services.PlayerService;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 
@@ -13,23 +13,17 @@ public class PlayerValidator extends EntityValidator<Player> {
 
         Player player = (Player) target;
 
-        /**
-         * Checking username unicity
-         */
-        Player otherPlayer = ((UserService)srv).getByUsername(player.getUsername());
+        Player otherPlayer = ((PlayerService)srv).getByUsername(player.getUsername());
 
         if (otherPlayer != null && !otherPlayer.getId().equals(player.getId())) {
-            errors.rejectValue("login", "error.user.duplicate.login", new Object[]{"login", player.getUsername()}, null);
+            errors.reject("player.username.already.used");
             return;
         }
 
-        /**
-         * Checking mail unicity
-         */
-        otherPlayer = ((UserService)srv).getByMail(player.getMail());
+        otherPlayer = ((PlayerService)srv).getByMail(player.getMail());
 
         if (otherPlayer != null && !otherPlayer.getId().equals(player.getId())) {
-            errors.rejectValue("mail", "error.user.duplicate.mail", new Object[]{"mail", player.getMail()}, null);
+            errors.reject("player.mail.already.used");
             return;
         }
     }

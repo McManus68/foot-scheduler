@@ -3,7 +3,7 @@ package com.mcmanus.fs.services;
 
 import com.mcmanus.fs.model.jpa.Player;
 
-public interface UserService extends EntityService<Player> {
+public interface PlayerService extends EntityService<Player> {
 
     Player getByUsername(String username);
 

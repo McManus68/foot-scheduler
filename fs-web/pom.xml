@@ -12,7 +12,6 @@
 	<name>Foot scheduler UI</name>
 	
 	<properties>
-		<jackson.version>2.7.5</jackson.version>
 		<yoga.version>1.0.6</yoga.version>		
 	</properties>
 
@@ -45,12 +44,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 

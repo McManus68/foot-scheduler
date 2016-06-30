@@ -3,13 +3,13 @@ package com.mcmanus.fs.services.impl;
 import com.mcmanus.fs.model.enumeration.RoleName;
 import com.mcmanus.fs.model.jpa.Player;
 import com.mcmanus.fs.persistence.repositories.PlayerRepository;
-import com.mcmanus.fs.services.UserService;
+import com.mcmanus.fs.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl extends EntityServiceImpl<Player> implements UserService {
+public class PlayerServiceImpl extends EntityServiceImpl<Player> implements PlayerService {
 
     @Autowired(required = false)
     PasswordEncoder pwdEncoder;

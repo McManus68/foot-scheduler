@@ -19,7 +19,7 @@ public class AuthenticationTokenFilter extends GenericFilterBean {
     private AuthenticationService authSrv;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
@@ -27,10 +27,7 @@ public class AuthenticationTokenFilter extends GenericFilterBean {
         if (authToken != null) {
             authSrv.validateToken(authToken);
         }
-        try {
-            chain.doFilter(request, response);
-        } catch (ServletException e) {
-            throw new IOException("ServletException", e);
-        }
+        chain.doFilter(request, response);
+
     }
 }

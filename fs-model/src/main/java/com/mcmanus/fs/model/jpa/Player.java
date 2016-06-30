@@ -1,8 +1,8 @@
 package com.mcmanus.fs.model.jpa;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.mcmanus.fs.model.enumeration.RoleName;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import com.mcmanus.fs.model.views.View;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,28 +13,25 @@ import java.util.Collection;
 @Table(name = "player")
 public class Player extends AbstractEntity implements UserDetails {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
+    @JsonView(View.Player.class)
     private Long id;
 
-    @NotEmpty
+    @JsonView(View.Player.class)
     private String username;
 
     private String password;
 
-    @NotEmpty @Email
+    @JsonView(View.Player.class)
     private String mail;
 
     @Enumerated(EnumType.STRING)
+    @JsonView(View.Player.class)
     private RoleName role;
 
     @Override
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setUsername(String username) {

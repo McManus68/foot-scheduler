@@ -30,14 +30,12 @@ public abstract class EntityController<T extends AbstractEntity> {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    @ModelAttribute
     public T get(@PathVariable Long id) {
         return srv.get(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ModelAttribute
     public Long add(@Valid @RequestBody T entity, BindingResult result) throws InputException {
         if(result.hasErrors()) {
             throw new InputException(result.getGlobalError().getCode());
@@ -47,7 +45,6 @@ public abstract class EntityController<T extends AbstractEntity> {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ModelAttribute
     public Long update(@Valid @RequestBody T entity , BindingResult result) throws InputException {
         if(result.hasErrors()) {
             throw new InputException(result.getGlobalError().getCode());
