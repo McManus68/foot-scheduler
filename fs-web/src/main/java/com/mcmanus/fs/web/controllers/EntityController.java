@@ -24,7 +24,6 @@ public abstract class EntityController<T extends AbstractEntity> {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
-    @ModelAttribute
     public List<T> getAll() {
         return srv.getAll();
     }

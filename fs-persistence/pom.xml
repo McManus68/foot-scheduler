@@ -10,12 +10,11 @@
     <description>Foot scheduler persistence layer</description>
 
     <properties>
-	<spring.data.jpa.version>1.10.2.RELEASE</spring.data.jpa.version>	
-	<mysql.connector.version>6.0.3</mysql.connector.version>
-	<flyway.version>4.0.3</flyway.version>
-	<common.beanutils.version>1.9.2</common.beanutils.version>
-	<common.dbcp.version>1.4</common.dbcp.version>
-    <hibernate.version>5.2.0.Final</hibernate.version>
+        <spring.data.jpa.version>1.10.2.RELEASE</spring.data.jpa.version>
+        <mysql.connector.version>6.0.3</mysql.connector.version>
+        <flyway.version>4.0.3</flyway.version>
+        <common.beanutils.version>1.9.2</common.beanutils.version>
+        <common.dbcp.version>1.4</common.dbcp.version>
     </properties>
 
     <dependencies>
@@ -73,6 +72,12 @@
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-context-support</artifactId>
     		<version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
 
         <dependency>

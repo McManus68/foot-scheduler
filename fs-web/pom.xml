@@ -8,15 +8,27 @@
 	</parent>
 
 	<artifactId>fs-web</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Foot scheduler UI</name>
 	
 	<properties>
 		<jackson.version>2.7.5</jackson.version>
 		<yoga.version>1.0.6</yoga.version>		
 	</properties>
-	
-	<dependencies>	
+
+	<dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
 
 		<dependency>
 			<groupId>org.skyscreamer</groupId>
@@ -53,18 +65,11 @@
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
-		<!--dependency>
-			<groupId>com.mcmanus.fs</groupId>
-			<artifactId>fs-client</artifactId>
-			<version>0.0.1</version>
-			<type>zip</type>
-		</dependency-->	
 
 		<dependency>
-	    		<groupId>com.mcmanus.fs</groupId>
-	    		<artifactId>fs-services</artifactId>
-	    		<version>0.0.1</version>
+            <groupId>com.mcmanus.fs</groupId>
+            <artifactId>fs-services</artifactId>
+            <version>0.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -74,60 +79,28 @@
 		</dependency>
 
 		<dependency>
-	    		<groupId>com.mcmanus.fs</groupId>
-	    		<artifactId>fs-validator</artifactId>
-	    		<version>0.0.1</version>
+            <groupId>com.mcmanus.fs</groupId>
+            <artifactId>fs-validator</artifactId>
+            <version>0.0.1</version>
 		</dependency>
 
 	</dependencies>
 
-	<build>
-		<finalName>foot-scheduler</finalName>
-		<plugins>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<!-- Clean will remove all the webapp content -->
-					<filesets>
-						<fileset>
-							<directory>${basedir}/src/main/webapp</directory>
-							<includes>
-								<include>**/*.*</include>
-							</includes>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>
-			<!--plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>						
-						<id>unpack</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.mcmanus.fs</groupId>
-									<artifactId>fs-client</artifactId>
-									<version>${project.version}</version>
-									<type>zip</type>
-									<overWrite>false</overWrite>
-									<outputDirectory>${project.build.directory}/fs</outputDirectory>
-									<includes>**</includes>
-								</artifactItem>
-							</artifactItems>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin-->
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

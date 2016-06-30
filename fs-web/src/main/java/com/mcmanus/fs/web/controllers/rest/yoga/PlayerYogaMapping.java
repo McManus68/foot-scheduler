@@ -20,5 +20,4 @@ public class PlayerYogaMapping extends YogaEntityConfiguration<Player> {
         return Arrays.asList("mail", "role");
 
     }
-
 }

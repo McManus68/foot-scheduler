@@ -1,12 +1,9 @@
 package com.mcmanus.fs.web.config;
 
-import org.apache.commons.lang3.StringUtils;
 import org.skyscreamer.yoga.configuration.DefaultEntityConfigurationRegistry;
 import org.skyscreamer.yoga.configuration.YogaEntityConfiguration;
-import org.skyscreamer.yoga.exceptions.ParseSelectorException;
 import org.skyscreamer.yoga.listener.RenderingListenerRegistry;
 import org.skyscreamer.yoga.selector.CoreSelector;
-import org.skyscreamer.yoga.selector.Selector;
 import org.skyscreamer.yoga.selector.SelectorResolver;
 import org.skyscreamer.yoga.selector.parser.AliasSelectorResolver;
 import org.skyscreamer.yoga.selector.parser.DynamicPropertyResolver;
@@ -23,7 +20,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
