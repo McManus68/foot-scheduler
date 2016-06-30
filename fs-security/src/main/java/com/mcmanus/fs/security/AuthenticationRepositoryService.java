@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class AuthenticationRepositoryService implements UserDetailsService {
 
     @Autowired
-    private PlayerRepository repo;
+    private PlayerRepository playerRepo;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        UserDetails details =  repo.findByUsername(username);
+        UserDetails details =  playerRepo.findByUsername(username);
         if (details == null) {
             throw new UsernameNotFoundException(username);
         }

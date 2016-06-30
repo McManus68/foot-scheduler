@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/recovery")
+@RequestMapping(value = "rest//recovery")
 public class RecoveryController {
 
     @Autowired
