@@ -16,7 +16,6 @@ public class Player extends AbstractEntity implements UserDetails {
     @Id @GeneratedValue
     @JsonView(View.Player.class)
     private Long id;
-
     @JsonView(View.Player.class)
     private String username;
 
@@ -29,6 +28,10 @@ public class Player extends AbstractEntity implements UserDetails {
     @JsonView(View.Player.class)
     private RoleName role;
 
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private PlayerSettings settings;
+
     @Override
     public Long getId() {
         return id;
@@ -36,6 +39,14 @@ public class Player extends AbstractEntity implements UserDetails {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public PlayerSettings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(PlayerSettings settings) {
+        this.settings = settings;
     }
 
     @Override
