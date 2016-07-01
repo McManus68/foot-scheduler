@@ -1,0 +1,34 @@
+# ======== GLOBAL ========
+
+*~
+.DS_Store
+.*
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# Itellij files
+*.iml
+npm-debug.log
+*/.settings/*
+# ======== CLIENT ========
+fs-client/src/build/*
+fs-client/src/bin/*
+fs-client/src/test-coverage/*
+fs-client/src/node_modules/*
+fs-client/src/app/vendor/*
+!fs-client/src/.bowerrc
+!fs-client/src/.jshintrc
+!fs-client/src/.npmrc
+fs-client/target/
+fs-client/target-grunt/
+
+# ======== SERVER ========
+*/.project
+*/.classpath
+*/target/*
+*/bin/*
+fs-web/src/main/webapp/*
+
+!.gitignore
