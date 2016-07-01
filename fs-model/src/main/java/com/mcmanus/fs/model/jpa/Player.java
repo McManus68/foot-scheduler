@@ -28,8 +28,8 @@ public class Player extends AbstractEntity implements UserDetails {
     @JsonView(View.Player.class)
     private RoleName role;
 
-    @ManyToOne
-    @JoinColumn(name = "player_id")
+    @OneToOne
+    @JoinColumn(name="settings_id")
     private PlayerSettings settings;
 
     @Override

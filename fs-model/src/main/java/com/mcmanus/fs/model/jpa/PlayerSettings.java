@@ -18,6 +18,9 @@ public class PlayerSettings extends AbstractEntity {
     @Column(name = "notify_team_composition")
     private boolean notifyTeamComposition;
 
+    @OneToOne(mappedBy = "settings")
+    private Player player;
+
     @Override
     public Long getId() {
         return id;
@@ -25,6 +28,14 @@ public class PlayerSettings extends AbstractEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public boolean isNotifyNewEvent() {
