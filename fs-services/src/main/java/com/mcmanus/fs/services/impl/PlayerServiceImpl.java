@@ -1,6 +1,5 @@
 package com.mcmanus.fs.services.impl;
 
-import com.mcmanus.fs.model.enumeration.RoleName;
 import com.mcmanus.fs.model.jpa.Player;
 import com.mcmanus.fs.persistence.repositories.PlayerRepository;
 import com.mcmanus.fs.services.PlayerService;
@@ -16,7 +15,6 @@ public class PlayerServiceImpl extends EntityServiceImpl<Player> implements Play
 
     @Override
     public Long save(Player player) {
-        player.setRole(RoleName.USER);
         return super.save(player);
     }
 

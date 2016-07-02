@@ -1,8 +1,8 @@
-package com.mcmanus.fs.model.enumeration;
+package com.mcmanus.fs.security.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum RoleName implements GrantedAuthority {
+public enum Role implements GrantedAuthority {
 
     USER,
     ADMIN;

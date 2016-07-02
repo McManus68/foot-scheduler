@@ -1,4 +1,4 @@
-package com.mcmanus.fs.security;
+package com.mcmanus.fs.security.config;
 
 import com.mcmanus.fs.security.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;

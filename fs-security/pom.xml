@@ -10,6 +10,10 @@
     <artifactId>fs-security</artifactId>
     <name>Foot scheduler security layer</name>
 
+    <properties>
+        <spring.security.version>4.1.0.RELEASE</spring.security.version>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -27,13 +31,24 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <dependency>

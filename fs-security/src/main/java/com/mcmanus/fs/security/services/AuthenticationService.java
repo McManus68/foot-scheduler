@@ -1,6 +1,7 @@
 package com.mcmanus.fs.security.services;
 
 import com.mcmanus.fs.model.jpa.Player;
+import com.mcmanus.fs.security.model.AuthenticatedUser;
 import com.mcmanus.fs.security.model.AuthenticationToken;
 import com.mcmanus.fs.security.model.Login;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,6 @@ public interface AuthenticationService {
 
     void validateToken(String token);
 
-    Player getLoggedUser();
+    AuthenticatedUser getLoggedUser();
 
 }

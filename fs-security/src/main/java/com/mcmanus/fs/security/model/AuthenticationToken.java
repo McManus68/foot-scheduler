@@ -9,11 +9,11 @@ public class AuthenticationToken {
     private Long uuid;
     private String username;
 
-    public AuthenticationToken(String token, Player player) {
+    public AuthenticationToken(String token, AuthenticatedUser user) {
         super();
         this.token = token;
-        this.uuid = player.getId();
-        this.username = player.getUsername();
+        this.uuid = user.getPlayer().getId();
+        this.username = user.getUsername();
     }
 
     public AuthenticationToken() {

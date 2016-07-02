@@ -1,7 +1,8 @@
 package com.mcmanus.fs.security.services.impl;
 
 import com.mcmanus.fs.model.jpa.Player;
-import com.mcmanus.fs.security.AuthenticationRepositoryService;
+import com.mcmanus.fs.persistence.repositories.PlayerRepository;
+import com.mcmanus.fs.security.model.AuthenticatedUser;
 import com.mcmanus.fs.security.model.AuthenticationToken;
 import com.mcmanus.fs.security.model.Login;
 import com.mcmanus.fs.security.services.AuthenticationService;
@@ -12,31 +13,27 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthenticationServiceImpl implements AuthenticationService {
-
-    private static final long RECOVERY_DEFAULT_EXPIRY_TIME = 60 * 24 * 60 * 1000;
-
-    private static final long AUTH_DEFAULT_EXPIRY_TIME = 60 * 60 * 1000;
-
-    @Autowired
-    private AuthenticationRepositoryService authRepoSrv;
+public class AuthenticationServiceImpl implements AuthenticationService, UserDetailsService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private PlayerRepository playerRepo;
 
     @Override
-    public AuthenticationToken login(Login login)  {
-
-        final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(login.getLogin(), login.getPassword());
+    public AuthenticationToken login(Login login) {
+        final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
         final Authentication authentication = authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        Player player = (Player) authentication.getPrincipal();
-        return new AuthenticationToken(TokenUtils.createToken(player), player);
+        AuthenticatedUser user = (AuthenticatedUser) authentication.getPrincipal();
+        return new AuthenticationToken(TokenUtils.createToken(user), user);
     }
 
     @Override
@@ -44,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         String login = TokenUtils.getPartFromToken(token, 0);
         if (login != null && !login.isEmpty()) {
-            UserDetails userDetails = authRepoSrv.loadUserByUsername(login);
+            UserDetails userDetails = loadUserByUsername(login);
 
             if (TokenUtils.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -54,7 +51,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public Player getLoggedUser() {
-        return (Player) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public AuthenticatedUser getLoggedUser() {
+        return (AuthenticatedUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        Player player = playerRepo.findByUsername(username);
+        if (player == null) {
+            throw new UsernameNotFoundException(username);
+        }
+        return new AuthenticatedUser(player);
     }
 }

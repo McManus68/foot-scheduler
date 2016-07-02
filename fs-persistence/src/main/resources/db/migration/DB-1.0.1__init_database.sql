@@ -16,9 +16,9 @@ CREATE TABLE `foot_event` (
 
 CREATE TABLE `player_settings` (
   `id` int(11) NOT NULL,
-  `notify_new_event` bit(1) DEFAULT NULL,
-  `notify_team_composition` bit(1) DEFAULT NULL,
-  `notify_to_main_list` bit(1) DEFAULT NULL,
+  `notify_new_event` tinyint(1) DEFAULT NULL,
+  `notify_team_composition` tinyint(1) DEFAULT NULL,
+  `notify_to_main_list` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
